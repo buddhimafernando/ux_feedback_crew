@@ -1,0 +1,252 @@
+{
+    "heuristics": [
+        {
+            "id": 1,
+            "name": "Visibility of system status",
+            "description": "The design should always keep users informed about what is going on, through appropriate feedback within a reasonable amount of time.",
+            "mobile_considerations": [
+                "Loading indicators for network requests",
+                "Progress bars for multi-step processes",
+                "Active state indicators for buttons/tabs",
+                "Network connectivity status",
+                "Form validation feedback"
+            ],
+            "evaluation_criteria": [
+                "Are there loading indicators when data is being fetched?",
+                "Do buttons show pressed/active states?",
+                "Is there feedback for user actions (e.g., success messages)?",
+                "Are there progress indicators for multi-step processes?"
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Match between system and real world",
+            "description": "The design should speak the users' language. Use words, phrases, and concepts familiar to the user, rather than internal jargon.",
+            "mobile_considerations": [
+                "Use platform-standard icons (iOS/Android)",
+                "Follow platform naming conventions",
+                "Use culturally appropriate symbols",
+                "Avoid technical jargon"
+            ],
+            "evaluation_criteria": [
+                "Are icons recognizable and standard?",
+                "Is the language clear and user-friendly?",
+                "Do labels match user expectations?"
+            ]
+        },
+        {
+            "id": 3,
+            "name": "User control and freedom",
+            "description": "Users often perform actions by mistake. They need a clearly marked 'emergency exit' to leave the unwanted action without having to go through an extended process.",
+            "mobile_considerations": [
+                "Back button functionality",
+                "Cancel options in dialogs",
+                "Undo for destructive actions",
+                "Easy navigation to previous screens"
+            ],
+            "evaluation_criteria": [
+                "Is there a clear way to go back or cancel?",
+                "Can users undo destructive actions?",
+                "Is navigation intuitive and reversible?"
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Consistency and standards",
+            "description": "Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform and industry conventions.",
+            "mobile_considerations": [
+                "Consistent button styles and colors",
+                "Standard gesture patterns (swipe, tap, pinch)",
+                "Uniform spacing and alignment",
+                "Consistent typography hierarchy",
+                "Platform-specific patterns (iOS vs Android)"
+            ],
+            "evaluation_criteria": [
+                "Are UI elements consistent throughout?",
+                "Do similar actions look similar?",
+                "Is text casing consistent?",
+                "Are colors used consistently for similar actions?"
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Error prevention",
+            "description": "Good error messages are important, but the best designs carefully prevent problems from occurring in the first place.",
+            "mobile_considerations": [
+                "Input validation as user types",
+                "Confirmation dialogs for destructive actions",
+                "Disabled states for unavailable actions",
+                "Clear constraints on input fields"
+            ],
+            "evaluation_criteria": [
+                "Are there confirmations for destructive actions?",
+                "Is input validation present?",
+                "Are error-prone actions made difficult to trigger accidentally?"
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Recognition rather than recall",
+            "description": "Minimize the user's memory load by making elements, actions, and options visible. The user should not have to remember information from one part of the interface to another.",
+            "mobile_considerations": [
+                "Visible labels on navigation items",
+                "Autocomplete for search/forms",
+                "Recently used items visible",
+                "Context preserved across screens"
+            ],
+            "evaluation_criteria": [
+                "Are navigation options clearly labeled?",
+                "Is important information always visible?",
+                "Are there helpful defaults or suggestions?"
+            ]
+        },
+        {
+            "id": 7,
+            "name": "Flexibility and efficiency of use",
+            "description": "Shortcuts—hidden from novice users—may speed up the interaction for the expert user so that the design can cater to both inexperienced and experienced users.",
+            "mobile_considerations": [
+                "Swipe gestures for common actions",
+                "Long-press for additional options",
+                "Quick actions/shortcuts",
+                "Customizable frequently-used features"
+            ],
+            "evaluation_criteria": [
+                "Are there shortcuts for common actions?",
+                "Can power users work more efficiently?",
+                "Are advanced features accessible but not intrusive?"
+            ]
+        },
+        {
+            "id": 8,
+            "name": "Aesthetic and minimalist design",
+            "description": "Interfaces should not contain information that is irrelevant or rarely needed. Every extra unit of information competes with the relevant units of information.",
+            "mobile_considerations": [
+                "Avoid clutter on small screens",
+                "Progressive disclosure of features",
+                "Clear visual hierarchy",
+                "Adequate white space",
+                "Limit of 5-7 items in navigation"
+            ],
+            "evaluation_criteria": [
+                "Is the interface clean and uncluttered?",
+                "Is there adequate white space?",
+                "Are only essential elements visible?",
+                "Is the visual hierarchy clear?"
+            ]
+        },
+        {
+            "id": 9,
+            "name": "Help users recognize, diagnose, and recover from errors",
+            "description": "Error messages should be expressed in plain language, precisely indicate the problem, and constructively suggest a solution.",
+            "mobile_considerations": [
+                "Clear error messages in user language",
+                "Specific guidance on how to fix errors",
+                "Inline validation with helpful hints",
+                "Graceful degradation when offline"
+            ],
+            "evaluation_criteria": [
+                "Are error messages clear and helpful?",
+                "Do errors explain what went wrong?",
+                "Are solutions suggested for errors?"
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Help and documentation",
+            "description": "It's best if the system doesn't need any additional explanation. However, it may be necessary to provide documentation to help users understand how to complete their tasks.",
+            "mobile_considerations": [
+                "Contextual help/tooltips",
+                "Onboarding tutorials for first-time users",
+                "FAQ or help section easily accessible",
+                "Search functionality in help"
+            ],
+            "evaluation_criteria": [
+                "Is help easily accessible when needed?",
+                "Is there onboarding for first-time users?",
+                "Are tooltips or hints available for complex features?"
+            ]
+        }
+    ],
+    "mobile_specific_guidelines": [
+        {
+            "category": "Touch Targets",
+            "guidelines": [
+                "Minimum touch target size: 44x44 points (iOS) or 48x48 dp (Android)",
+                "Adequate spacing between touchable elements (8dp minimum)",
+                "Primary actions should be easily reachable with thumb"
+            ]
+        },
+        {
+            "category": "Typography",
+            "guidelines": [
+                "Minimum body text size: 16sp (Android) or 17pt (iOS)",
+                "Sufficient contrast ratio (4.5:1 for normal text, 3:1 for large text)",
+                "Line height of 1.5x font size for readability"
+            ]
+        },
+        {
+            "category": "Color and Contrast",
+            "guidelines": [
+                "WCAG AA compliance for text contrast",
+                "Don't rely on color alone to convey information",
+                "Sufficient contrast for interactive elements"
+            ]
+        },
+        {
+            "category": "Navigation",
+            "guidelines": [
+                "Clear navigation hierarchy",
+                "Consistent navigation patterns",
+                "Easy return to home/main screen",
+                "Bottom navigation for primary destinations (Android), Tab bar (iOS)"
+            ]
+        },
+        {
+            "category": "Forms and Input",
+            "guidelines": [
+                "Appropriate keyboard types for input fields",
+                "Clear labels for all input fields",
+                "Visible focus states",
+                "Real-time validation feedback"
+            ]
+        }
+    ],
+    "severity_levels": {
+        "critical": {
+            "score": 0,
+            "description": "Prevents users from completing core tasks. Must be fixed immediately.",
+            "examples": [
+                "Broken core functionality",
+                "Completely inaccessible content",
+                "Data loss risk"
+            ]
+        },
+        "high": {
+            "score": 3,
+            "description": "Major usability problem. Significantly impacts user experience.",
+            "examples": [
+                "Poor contrast making text unreadable",
+                "Missing critical feedback",
+                "Confusing navigation"
+            ]
+        },
+        "medium": {
+            "score": 6,
+            "description": "Moderate usability issue. Causes frustration but has workarounds.",
+            "examples": [
+                "Inconsistent styling",
+                "Small touch targets",
+                "Minor confusion"
+            ]
+        },
+        "low": {
+            "score": 8,
+            "description": "Minor usability issue. Cosmetic or minor inconvenience.",
+            "examples": [
+                "Slight inconsistency",
+                "Missing tooltip",
+                "Minor aesthetic issue"
+            ]
+        }
+    }
+}

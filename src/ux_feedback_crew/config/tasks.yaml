@@ -1,0 +1,80 @@
+analyze_ui:
+  description: >
+    Analyze the mobile UI screenshot at {screenshot_path}.
+    
+    Extract comprehensive information including:
+    - All UI components (buttons, inputs, images, text, icons)
+    - Layout structure and visual hierarchy
+    - Color scheme and palette
+    - Typography details (sizes, weights, styles)
+    - Spacing and density
+    - Notable patterns and conventions
+    - Any accessibility concerns
+    
+    Provide detailed, structured analysis that will be used
+    for heuristic evaluation.
+  expected_output: >
+    A comprehensive JSON analysis containing all UI components, layout information, color scheme, typography details, spacing observations, and identified patterns.
+  agent: vision_analyst
+
+evaluate_heuristics:
+  description: >
+    Using the vision analysis from the previous task, evaluate this mobile UI against Nielsen's 10 Usability Heuristics and mobile-specific UX guidelines.
+    
+    For each violation found:
+    - Identify which heuristic is violated
+    - Assign severity (critical/high/medium/low)
+    - Describe the specific issue clearly
+    - List affected UI components
+    - Provide improvement suggestions
+    
+    Also identify what the UI does well (strengths). Calculate an overall UX score (0-10).
+  expected_output: >
+    A structured JSON evaluation containing all violations with
+    severity levels, affected components, improvement suggestions,
+    identified strengths, and an overall UX score.
+  agent: heuristic_evaluator
+  context:
+    - analyze_ui
+
+generate_feedback:
+  description: >
+    Transform the heuristic violations into developer-friendly, actionable feedback using both the vision analysis and heuristic evaluation.
+    
+    For each issue:
+    - Create an action-oriented title
+    - Explain why it matters to users
+    - Provide step-by-step implementation guidance
+    - Describe visual changes needed for wireframes
+    - Assign priority based on impact vs effort
+    
+    Also identify:
+    - Quick wins (easy fixes with big impact)
+    - Priority order for all fixes
+    - Estimated effort for each change
+  expected_output: >
+    Developer-friendly feedback in JSON format with actionable items, priorities, quick wins, wireframe instructions, and implementation guidance.
+  agent: feedback_specialist
+  context:
+    - analyze_ui
+    - evaluate_heuristics
+
+create_wireframe:
+  description: >
+    Create an improved mobile UI wireframe that implements all the feedback suggestions while maintaining the original design intent.
+    
+    The wireframe should:
+    - Be mobile-first (375px width, responsive)
+    - Implement ALL suggested improvements
+    - Use clean, modern styling
+    - Have proper spacing and typography
+    - Be interactive and exportable as HTML
+    - Show clear visual improvements
+    
+    Generate complete, production-ready HTML/CSS code.
+  expected_output: >
+    A complete HTML wireframe file saved to disk, showing the improved design with all feedback implemented. Return the file path of the generated wireframe.
+  agent: wireframe_designer
+  context:
+    - analyze_ui
+    - generate_feedback

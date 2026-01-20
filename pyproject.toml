@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "ux-feedback-crew"
+version = "0.1.0"
+description = "Multi-agent UX feedback system using CrewAI"
+authors = ["Your Name <your.email@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"
+crewai = {extras = ["tools"], version = "^0.86.0"}
+google-generativeai = "^0.8.3"
+pillow = "^10.1.0"
+python-dotenv = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
