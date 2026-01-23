@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Pool Mobile UI - Improved Wireframe</title>
+    <style>
+        /* Base styles and variables */
+        :root {
+            /* Colors - Streamlined and WCAG compliant */
+            --color-app-bar-bg: #2E7D32; /* Darker green for app bar for contrast with white text */
+            --color-purple-gradient-start: #6A1B9A; /* Dark Purple */
+            --color-purple-gradient-end: #8E24AA;   /* Lighter Purple */
+            --color-blue-gradient-start: #1976D2;  /* Dark Blue */
+            --color-blue-gradient-end: #2196F3;    /* Lighter Blue */
+            --color-orange-red-gradient-start: #D32F2F; /* Dark Red */
+            --color-orange-red-gradient-end: #F44336;  /* Red */
+            --color-gold: #FFD700;
+            --color-red-accent: #F44336; /* Consistent red accent for points */
+            --color-white: #FFFFFF;
+            --color-dark-text: #212121; /* Dark grey for improved contrast on gradients */
+            --color-light-grey: #E0E0E0; /* For subtle text/placeholders */
+            --color-medium-grey: #BDBDBD; /* For skeleton loaders */
+            --color-skeleton-bg: #E0E0E0;
+            --color-skeleton-line: #F5F5F5;
+            --color-overlay-dark: rgba(0, 0, 0, 0.3); /* For beginner pill background */
+
+            /* Spacing */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+
+            /* Border Radius */
+            --radius-xs: 4px;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-pill: 12px;
+
+            /* Box Shadow */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow-md: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        }
+
+        /* Universal box-sizing and reset margins/paddings */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Body styles for background and centering the mobile frame */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top for longer content, instead of center */
+            min-height: 100vh;
+            padding: var(--spacing-md);
+        }
+
+        /* Mobile Frame - the main container for the UI */
+        .mobile-frame {
+            width: 100%;
+            max-width: 375px; /* Mobile-first design width */
+            background-color: var(--color-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden; /* Ensures rounded corners are respected */
+            display: flex;
+            flex-direction: column;
+            min-height: 667px; /* A common mobile height for demonstration */
+        }
+
+        /* App Bar Styling */
+        .app-bar {
+            background-color: var(--color-app-bar-bg);
+            color: var(--color-white);
+            padding: var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .app-bar-left, .app-bar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .app-bar-icon {
+            font-size: 20px;
+            margin-right: var(--spacing-sm);
+            cursor: pointer;
+        }
+
+        .app-bar-title-group {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .app-bar-title {
+            font-size: 20px; /* medium-large */
+            font-weight: 600;
+        }
+
+        .app-bar-subtitle {
+            font-size: 12px; /* small */
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.85); /* Improved contrast on dark green background */
+            margin-top: 2px;
+        }
+
+        .app-bar-points {
+            display: flex;
+            align-items: center;
+            font-size: 14px; /* small */
+            font-weight: 700;
+        }
+
+        .app-bar-points .icon-money {
+            font-size: 20px; /* medium */
+            color: var(--color-gold);
+            margin-right: var(--spacing-xs);
+        }
+
+        .app-bar-points .score {
+            color: var(--color-red-accent);
+        }
+
+        /* Main Content Area */
+        .content-area {
+            padding: var(--spacing-md);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            flex-grow: 1; /* Allows content area to fill remaining space in the frame */
+        }
+
+        /* Action Cards (Redeem, Rate Us) */
+        .action-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--spacing-md);
+        }
+
+        .action-card {
+            flex: 1;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            color: var(--color-dark-text); /* Dark text for improved contrast on gradients */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 100px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.1s ease-out, box-shadow 0.1s ease-out; /* Interaction feedback */
+        }
+
+        .action-card.redeem {
+            background: linear-gradient(135deg, var(--color-purple-gradient-start), var(--color-purple-gradient-end));
+        }
+
+        .action-card.rate-us {
+            background: linear-gradient(135deg, var(--color-blue-gradient-start), var(--color-blue-gradient-end));
+        }
+
+        .action-card:active {
+            transform: scale(0.98);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); /* Pressed state visual feedback */
+        }
+
+        .action-card .icon {
+            font-size: 32px; /* medium */
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-dark-text); /* Dark icon for improved contrast */
+        }
+
+        .action-card .label {
+            font-size: 14px; /* small */
+            font-weight: 500;
+            color: var(--color-dark-text); /* Dark text for improved contrast */
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid var(--color-white);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            display: none; /* Hidden by default */
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Quiz Category Cards */
+        .quiz-card {
+            background-color: var(--color-light-grey); /* Fallback background */
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 120px; /* large card size */
+            cursor: pointer;
+            transition: transform 0.1s ease-out, box-shadow 0.1s ease-out; /* Interaction feedback */
+        }
+        .quiz-card:active {
+            transform: scale(0.98);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); /* Pressed state visual feedback */
+        }
+
+        .quiz-card.maths {
+            background: linear-gradient(135deg, var(--color-purple-gradient-start), var(--color-purple-gradient-end));
+        }
+        .quiz-card.gk {
+            background: linear-gradient(135deg, var(--color-blue-gradient-start), var(--color-blue-gradient-end));
+        }
+        .quiz-card.science {
+            background: linear-gradient(135deg, var(--color-orange-red-gradient-start), var(--color-orange-red-gradient-end));
+        }
+
+        .quiz-card-image {
+            width: 80px; /* large */
+            height: 80px; /* large */
+            background-color: rgba(255,255,255,0.2); /* Subtle illustration placeholder background */
+            border-radius: var(--radius-sm);
+            margin-right: var(--spacing-md);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: var(--color-white); /* Text-based illustration */
+        }
+
+        .quiz-card-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: var(--color-white);
+        }
+
+        .quiz-card-title {
+            font-size: 24px; /* large */
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .beginner-pill {
+            background-color: var(--color-overlay-dark); /* Dark semi-transparent background for contrast */
+            color: var(--color-white);
+            font-size: 12px; /* small */
+            font-weight: 500;
+            padding: 4px var(--spacing-sm);
+            border-radius: var(--radius-pill); /* Pill shape */
+            align-self: flex-start; /* Aligns to start within flex column */
+        }
+
+        /* Loading States for Interactive Cards (Spinners) */
+        .action-card .card-inner-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .action-card.loading .card-inner-content {
+            display: none;
+        }
+
+        .action-card.loading .spinner {
+            display: block; /* Show spinner when loading */
+            margin: auto;
+        }
+
+        /* Skeleton Screens for Quiz Cards */
+        .quiz-card .skeleton-loader {
+            display: none; /* Hidden by default */
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .quiz-card.loading .card-inner-content {
+            display: none;
+        }
+        .quiz-card.loading .skeleton-loader {
+            display: flex; /* Show skeleton when loading */
+        }
+
+        .skeleton-image {
+            width: 80px;
+            height: 80px;
+            background-color: var(--color-skeleton-bg);
+            border-radius: var(--radius-sm);
+            margin-right: var(--spacing-md);
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        .skeleton-text-group {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .skeleton-text {
+            height: 20px;
+            background-color: var(--color-skeleton-bg);
+            border-radius: var(--radius-xs);
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+        .skeleton-text.large {
+            width: 70%;
+            height: 28px;
+        }
+        .skeleton-text.small {
+            width: 40%;
+            height: 16px;
+        }
+        .skeleton-pill {
+            height: 24px;
+            width: 70px; /* Matches beginner pill width */
+            background-color: var(--color-skeleton-bg);
+            border-radius: var(--radius-pill);
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { background-color: var(--color-skeleton-bg); }
+            50% { background-color: var(--color-skeleton-line); }
+            100% { background-color: var(--color-skeleton-bg); }
+        }
+
+        /* Toggle Loading State Button for Demonstration */
+        .toggle-loading {
+            position: fixed;
+            bottom: var(--spacing-md);
+            left: 50%;
+            transform: translateX(-50%);
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: var(--color-dark-text);
+            color: var(--color-white);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 14px;
+            box-shadow: var(--shadow-sm);
+            border: none;
+            outline: none;
+        }
+        .toggle-loading:hover {
+            opacity: 0.9;
+        }
+        .toggle-loading:active {
+            transform: translateX(-50%) scale(0.98);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="mobile-frame" id="mobileFrame">
+        <!-- App Bar -->
+        <header class="app-bar">
+            <div class="app-bar-left">
+                <span class="app-bar-icon" aria-label="Navigation Menu">&#9776;</span> <!-- Hamburger Menu Icon -->
+                <div class="app-bar-title-group">
+                    <span class="app-bar-title">Quiz Pool</span>
+                    <span class="app-bar-subtitle">Play Quiz Earn Money</span>
+                </div>
+            </div>
+            <div class="app-bar-right">
+                <div class="app-bar-points">
+                    <span class="icon-money" aria-label="Money Bag">&#x1F4B0;</span> <!-- Money Bag Icon -->
+                    <span class="score">27</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            <!-- Secondary Action Cards -->
+            <div class="action-cards">
+                <div class="action-card redeem" id="redeemCard" tabindex="0" role="button" aria-label="Redeem rewards">
+                    <div class="card-inner-content">
+                        <span class="icon" aria-label="Gift">&#x1F381;</span> <!-- Gift Icon -->
+                        <span class="label">Redeem</span>
+                    </div>
+                    <div class="spinner"></div>
+                </div>
+
+                <div class="action-card rate-us" id="rateUsCard" tabindex="0" role="button" aria-label="Rate us on app store">
+                    <div class="card-inner-content">
+                        <span class="icon" aria-label="Star">&#9733;</span> <!-- Star Icon -->
+                        <span class="label">Rate Us</span>
+                    </div>
+                    <div class="spinner"></div>
+                </div>
+            </div>
+
+            <!-- Quiz Category Cards -->
+            <div class="quiz-categories">
+                <div class="quiz-card maths" id="mathsCard" tabindex="0" role="button" aria-label="Play Maths Beginner Quiz">
+                    <div class="card-inner-content">
+                        <div class="quiz-card-image">M</div> <!-- Maths illustration placeholder -->
+                        <div class="quiz-card-content">
+                            <span class="quiz-card-title">MATHS</span>
+                            <span class="beginner-pill">Beginner</span>
+                        </div>
+                    </div>
+                    <!-- Skeleton Loader for Maths Card -->
+                    <div class="skeleton-loader">
+                        <div class="skeleton-image"></div>
+                        <div class="skeleton-text-group">
+                            <div class="skeleton-text large"></div>
+                            <div class="skeleton-pill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-card gk" id="gkCard" tabindex="0" role="button" aria-label="Play General Knowledge Beginner Quiz">
+                    <div class="card-inner-content">
+                        <div class="quiz-card-image">GK</div> <!-- GK illustration placeholder -->
+                        <div class="quiz-card-content">
+                            <span class="quiz-card-title">GK</span>
+                            <span class="beginner-pill">Beginner</span>
+                        </div>
+                    </div>
+                     <!-- Skeleton Loader for GK Card -->
+                     <div class="skeleton-loader">
+                        <div class="skeleton-image"></div>
+                        <div class="skeleton-text-group">
+                            <div class="skeleton-text large"></div>
+                            <div class="skeleton-pill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-card science" id="scienceCard" tabindex="0" role="button" aria-label="Play Science Beginner Quiz">
+                    <div class="card-inner-content">
+                        <div class="quiz-card-image">SCI</div> <!-- Science illustration placeholder -->
+                        <div class="quiz-card-content">
+                            <span class="quiz-card-title">SCIENCE</span>
+                            <span class="beginner-pill">Beginner</span>
+                        </div>
+                    </div>
+                     <!-- Skeleton Loader for Science Card -->
+                     <div class="skeleton-loader">
+                        <div class="skeleton-image"></div>
+                        <div class="skeleton-text-group">
+                            <div class="skeleton-text large"></div>
+                            <div class="skeleton-pill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toggle Loading State Button (for demonstration purposes) -->
+    <button class="toggle-loading" id="toggleLoading">Show Loading States</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('toggleLoading');
+            const redeemCard = document.getElementById('redeemCard');
+            const rateUsCard = document.getElementById('rateUsCard');
+            const mathsCard = document.getElementById('mathsCard');
+            const gkCard = document.getElementById('gkCard');
+            const scienceCard = document.getElementById('scienceCard');
+
+            let isLoading = false;
+
+            // Function to toggle loading states
+            const toggleLoadingStates = () => {
+                isLoading = !isLoading;
+
+                // Toggle loading class for action cards (spinner)
+                redeemCard.classList.toggle('loading', isLoading);
+                rateUsCard.classList.toggle('loading', isLoading);
+
+                // Toggle loading class for quiz cards (skeleton)
+                mathsCard.classList.toggle('loading', isLoading);
+                gkCard.classList.toggle('loading', isLoading);
+                scienceCard.classList.toggle('loading', isLoading);
+
+                // Update button text
+                toggleButton.textContent = isLoading ? 'Hide Loading States' : 'Show Loading States';
+            };
+
+            // Event listener for the toggle button
+            toggleButton.addEventListener('click', toggleLoadingStates);
+
+            // Optional: Start in a loading state for immediate demonstration
+            // toggleLoadingStates();
+        });
+    </script>
+</body>
+</html>

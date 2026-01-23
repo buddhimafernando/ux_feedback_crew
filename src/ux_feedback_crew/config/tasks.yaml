@@ -17,6 +17,14 @@ analyze_ui:
     A comprehensive JSON analysis containing all UI components, layout information, color scheme, typography details, spacing observations, and identified patterns.
   agent: vision_analyst
 
+  # analyze_ui:
+  # description: >
+  #   Analyze the UI screenshot using the vision tool and return structured JSON.
+  # expected_output: >
+  #   Valid JSON describing UI components, layout, colors, typography, spacing,
+  #   accessibility observations, and notable patterns.
+  # agent: vision_analyst
+
 evaluate_heuristics:
   description: >
     Using the vision analysis from the previous task, evaluate this mobile UI against Nielsen's 10 Usability Heuristics and mobile-specific UX guidelines.

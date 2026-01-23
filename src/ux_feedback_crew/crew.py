@@ -16,10 +16,10 @@ class UxFeedbackCrew():
     agents_config = 'config/agents.yaml'
     tasks_config = 'config/tasks.yaml'
 
-    # 1. Define the Gemini LLM for the agents to use
+    #  Define the Gemini LLM for the agents to use
     def __init__(self):
         self.gemini_llm = LLM(
-            model="gemini/gemini-3-flash-preview", # Or gemini-2.0-flash-exp
+            model="gemini/gemini-2.5-flash", # Or gemini-2.0-flash-exp
             api_key=os.getenv("GEMINI_API_KEY")
         )
 
@@ -28,8 +28,9 @@ class UxFeedbackCrew():
         return Agent(
             config=self.agents_config['vision_analyst'],
             tools=[analyze_ui_screenshot],
-            llm=self.gemini_llm, # 2. Assign the LLM here
-            verbose=True
+            llm=self.gemini_llm, 
+            verbose=True,   
+            allow_delegation=False # Prevent it from asking other agents for help
         )
     
     @agent
@@ -45,6 +46,7 @@ class UxFeedbackCrew():
     def feedback_specialist(self) -> Agent:
         return Agent(
             config=self.agents_config['feedback_specialist'],
+            llm=self.gemini_llm, # 2. Assign the LLM here
             tools=[generate_feedback],
             verbose=True
         )
@@ -53,6 +55,7 @@ class UxFeedbackCrew():
     def wireframe_designer(self) -> Agent:
         return Agent(
             config=self.agents_config['wireframe_designer'],
+            llm=self.gemini_llm, # 2. Assign the LLM here
             tools=[create_wireframe],
             verbose=True
         )
@@ -89,5 +92,6 @@ class UxFeedbackCrew():
             agents=self.agents,
             tasks=self.tasks,
             process=Process.sequential,
-            verbose=True
+            verbose=True,
+            max_iter=1   
         )
