@@ -2,8 +2,11 @@ from crewai.tools import tool
 from google import genai
 from dotenv import load_dotenv
 from PIL import Image
+from pathlib import Path
+from datetime import datetime
 import os
 import io
+import json
 
 # Load environment variables at the top
 load_dotenv()
@@ -90,4 +93,25 @@ Return ONLY valid JSON with this structure:
     if result_text.endswith("```"):
         result_text = result_text[:-3]
 
-    return result_text.strip()
+    result_text = result_text.strip()
+    
+    # Save to JSON file
+    output_dir = Path("data/outputs")
+    output_dir.mkdir(exist_ok=True, parents=True)
+    
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    output_path = output_dir / f"vision_analysis_{timestamp}.json"
+    
+    try:
+        # Parse to validate JSON and pretty print
+        json_data = json.loads(result_text)
+        with open(output_path, 'w', encoding='utf-8') as f:
+            json.dump(json_data, f, indent=2, ensure_ascii=False)
+        print(f"✓ Vision analysis saved to: {output_path}")
+    except json.JSONDecodeError as e:
+        print(f"⚠ JSON validation error: {e}")
+        # Save raw text anyway
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(result_text)
+    
+    return result_text

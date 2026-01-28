@@ -1,0 +1,56 @@
+{
+  "feedback_items": [
+    {
+      "id": 1,
+      "title": "Implement visual feedback for interactive elements and loading states",
+      "priority": "medium",
+      "why_it_matters": "Users need immediate feedback to understand if their interactions (taps) have registered and if the app is processing information (loading). Lack of feedback can lead to user uncertainty, frustration, repeated taps, or abandonment, hindering their ability to effectively use the application.",
+      "what_to_do": [
+        "For all tappable cards ('Redeem', 'Rate Us', 'MATHS', 'GK', 'SCIENCE'), implement a clear visual press state (e.g., a subtle background color change, a ripple effect, or a slight shadow increase) when the user touches them.",
+        "For all tappable icons ('Hamburger Menu', 'Money Bag'), implement a visual press state (e.g., a slight opacity change, scale animation, or background highlight) on touch.",
+        "When a user taps a quiz category card ('MATHS', 'GK', 'SCIENCE') and the app needs to load content or navigate to a new screen, display a prominent and dismissible loading indicator (e.g., a spinner or progress bar) until the content is fully presented."
+      ],
+      "wireframe_changes": "Illustrate a distinct press state (e.g., a darker overlay or shadow lift) for all interactive cards and icons upon touch. For transitions to quiz detail screens, show a centered loading spinner overlay or a progress bar at the top of the content area."
+    },
+    {
+      "id": 2,
+      "title": "Improve contrast for icons on gradient backgrounds",
+      "priority": "low",
+      "why_it_matters": "Low contrast icons are difficult for all users to perceive quickly, especially those with visual impairments or in bright lighting conditions. This violates accessibility guidelines and can make key actions harder to discover and use, leading to a less inclusive and efficient user experience.",
+      "what_to_do": [
+        "Change the 'Gift Box' and 'Star Outline' icons on the 'Redeem' and 'Rate Us' cards, respectively, from black to white. White typically provides better contrast against vibrant gradient backgrounds.",
+        "Verify the contrast ratio of the updated white icons against the darkest parts of their respective purple and blue gradient backgrounds to ensure compliance with WCAG (Web Content Accessibility Guidelines) AA standards."
+      ],
+      "wireframe_changes": "Update the 'Gift Box' and 'Star Outline' icons on the 'Redeem' and 'Rate Us' cards to white. Visually confirm that the new icons stand out clearly against the gradient backgrounds."
+    },
+    {
+      "id": 3,
+      "title": "Increase readability of 'Beginner' level labels",
+      "priority": "low",
+      "why_it_matters": "Text that is too small can be challenging for many users to read, particularly those with presbyopia or other mild visual impairments. Ensuring text is adequately sized improves overall readability and reduces eye strain, enhancing the user experience for a broader audience.",
+      "what_to_do": [
+        "Increase the font size of all 'Beginner' labels within the 'MATHS', 'GK', and 'SCIENCE' quiz category cards by at least 1-2 points (e.g., from 12sp to 14sp or 14sp to 16sp).",
+        "Test the updated layout on various screen sizes and device resolutions to ensure the larger text does not cause truncation, overflow, or negatively impact the card's visual balance."
+      ],
+      "wireframe_changes": "Adjust the font size of the 'Beginner' labels in all quiz category cards to be noticeably larger, ensuring they remain proportionally aligned and do not overlap with other card elements."
+    }
+  ],
+  "quick_wins": [
+    {
+      "change": "Change the 'Gift Box' and 'Star Outline' icons on the 'Redeem' and 'Rate Us' cards from black to white.",
+      "impact": "Significantly improves icon visibility and accessibility on gradient backgrounds.",
+      "effort": "5 minutes"
+    },
+    {
+      "change": "Increase the font size of all 'Beginner' labels by 1-2 points within the quiz category cards.",
+      "impact": "Enhances readability for a broader user base and improves the overall legibility of key information.",
+      "effort": "5 minutes"
+    }
+  ],
+  "summary": {
+    "total_issues": 3,
+    "high": 0,
+    "medium": 1,
+    "low": 2
+  }
+}

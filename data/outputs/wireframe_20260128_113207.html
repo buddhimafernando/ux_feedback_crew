@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Mobile Wireframe</title>
+    <style>
+        :root {
+            --fb-blue: #1877F2;
+            --fb-bg: #F0F2F5;
+            --white: #ffffff;
+            --text-main: #050505;
+            --text-secondary: #65676B;
+            --divider: #CED0D4;
+            --error-red: #FA383E;
+            --touch-target: 48px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Mobile Container (375px) */
+        .mobile-container {
+            width: 375px;
+            height: 812px;
+            background-color: var(--fb-bg);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        /* Status Bar */
+        .status-bar {
+            height: 44px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .status-icons span {
+            margin-left: 5px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            padding: 8px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .logo {
+            color: var(--fb-blue);
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: -1px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            background: #E4E6EB;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            border: none;
+            font-size: 18px;
+        }
+
+        .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--error-red);
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            border: 2px solid white;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        /* Content Area */
+        .scroll-area {
+            flex: 1;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+        .scroll-area::-webkit-scrollbar { display: none; }
+
+        /* Post Creation */
+        .create-post {
+            background: var(--white);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ddd;
+            flex-shrink: 0;
+        }
+
+        .input-mock {
+            flex: 1;
+            height: 36px;
+            border-radius: 20px;
+            border: 1px solid var(--divider);
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* Stories */
+        .stories-container {
+            background: var(--white);
+            padding: 12px 16px;
+            margin-bottom: 10px;
+        }
+
+        .stories-scroll {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .story-card {
+            width: 100px;
+            height: 170px;
+            border-radius: 12px;
+            background: #ddd;
+            position: relative;
+            flex-shrink: 0;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .story-card.create .add-story-btn {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 32px;
+            height: 32px;
+            background: var(--fb-blue);
+            border: 3px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .story-name {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+        }
+
+        /* Post Feed */
+        .post {
+            background: var(--white);
+            margin-bottom: 10px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .post-header {
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .post-info { flex: 1; }
+        .post-author { font-weight: 600; font-size: 15px; }
+        .post-meta { font-size: 12px; color: var(--text-secondary); }
+
+        .post-actions-top { display: flex; gap: 4px; }
+
+        .post-content {
+            padding: 0 16px 12px;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .post-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: #e9ebee;
+            object-fit: cover;
+        }
+
+        /* Skeleton Loading */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Bottom Nav */
+        nav.bottom-nav {
+            height: 56px;
+            background: var(--white);
+            border-top: 1px solid var(--divider);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: var(--touch-target);
+            height: var(--touch-target);
+            color: var(--text-secondary);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-item.active { color: var(--fb-blue); }
+
+        /* Dialogs & Feedback */
+        .toast {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #323232;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 14px;
+            transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .toast.show { transform: translateX(-50%) translateY(0); }
+
+        .snackbar-undo {
+            position: absolute;
+            bottom: 70px;
+            width: 90%;
+            left: 5%;
+            background: #323232;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .undo-btn {
+            color: #42b0ff;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal {
+            background: white;
+            width: 80%;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .modal-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-confirm { background: var(--fb-blue); color: white; padding: 12px; border-radius: 6px; border: none; font-weight: bold; }
+        .btn-cancel { background: #E4E6EB; color: var(--text-main); padding: 12px; border-radius: 6px; border: none; }
+
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .reaction-pop {
+            animation: pop 0.3s ease-out;
+        }
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.4); }
+            100% { transform: scale(1); }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="mobile-container">
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <span>21:05</span>
+        <div class="status-icons">
+            <span>4G</span>
+            <span>🔋</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">facebook</div>
+        <div class="header-actions">
+            <button class="icon-btn" onclick="showToast('Feature coming soon!')">➕</button>
+            <button class="icon-btn">🔍</button>
+            <button class="icon-btn">
+                💬
+                <span class="badge">9+</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Scrollable Content -->
+    <div class="scroll-area" id="feedScroll">
+        <!-- Post Composer -->
+        <section class="create-post">
+            <div class="profile-pic skeleton"></div>
+            <div class="input-mock" onclick="showToast('Post created successfully!')">What's on your mind?</div>
+            <button class="icon-btn" style="background:none">🖼️</button>
+        </section>
+
+        <!-- Stories Carousel -->
+        <section class="stories-container">
+            <div class="stories-scroll">
+                <div class="story-card create">
+                    <div style="height:110px; background:#f0f2f5;"></div>
+                    <div class="add-story-btn">+</div>
+                    <div class="story-name" style="color:black; bottom: 5px; text-shadow: none; text-align: center; width: 100%;">Create Story</div>
+                </div>
+                <div class="story-card skeleton">
+                    <div class="story-name">Harindu Samarasinghe</div>
+                </div>
+                <div class="story-card skeleton">
+                    <div class="story-name">Prabhath Madhusanka</div>
+                </div>
+                <div class="story-card skeleton">
+                    <div class="story-name">Anuda Pasandul</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Post Feed -->
+        <div id="mainPost" class="post">
+            <div class="post-header">
+                <div class="profile-pic" style="background: #444;"></div>
+                <div class="post-info">
+                    <div class="post-author">Babuku - බබුකු</div>
+                    <div class="post-meta">5h • 🌐</div>
+                </div>
+                <div class="post-actions-top">
+                    <button class="icon-btn" style="background:none" onclick="toggleModal(true)">•••</button>
+                    <button class="icon-btn" style="background:none" onclick="hidePost()">✕</button>
+                </div>
+            </div>
+            <div class="post-content">
+                බිරිඳක් තම මියගිය ස්වාමියාගේ කමිසය වසර අටක් තිස්සේ නිවසේ සාලයේ එල්ලා තැබුවාය.
+            </div>
+            <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=400" class="post-image" alt="Post content">
+            
+            <div style="padding: 12px 16px; border-top: 1px solid #eee; display: flex; justify-content: space-around;">
+                <button class="icon-btn" style="background:none; width: auto; font-size: 14px; gap: 5px;" onclick="react(this)">❤️ Love</button>
+                <button class="icon-btn" style="background:none; width: auto; font-size: 14px; gap: 5px;">💬 Comment</button>
+                <button class="icon-btn" style="background:none; width: auto; font-size: 14px; gap: 5px;">↗️ Share</button>
+            </div>
+        </div>
+
+        <!-- Skeleton Post (For visual feedback improvement) -->
+        <div class="post" style="padding: 16px;">
+            <div style="display:flex; gap:10px; margin-bottom:15px">
+                <div class="profile-pic skeleton"></div>
+                <div style="flex:1">
+                    <div class="skeleton" style="height:15px; width:40%; margin-bottom:8px"></div>
+                    <div class="skeleton" style="height:10px; width:20%"></div>
+                </div>
+            </div>
+            <div class="skeleton" style="height:150px; width:100%; border-radius:8px"></div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active">🏠</a>
+        <a href="#" class="nav-item">🎬</a>
+        <a href="#" class="nav-item">
+            👥
+            <span class="badge" style="top: 2px; right: 2px;">1</span>
+        </a>
+        <a href="#" class="nav-item">🏪</a>
+        <a href="#" class="nav-item">
+            🔔
+            <span class="badge" style="top: 2px; right: 2px;">2</span>
+        </a>
+        <a href="#" class="nav-item">☰</a>
+    </nav>
+
+    <!-- Feedback UI Elements -->
+    <div id="toast" class="toast">✅ Post created successfully!</div>
+
+    <div id="undoSnackbar" class="snackbar-undo">
+        <span>Post hidden</span>
+        <span class="undo-btn" onclick="undoHide()">Undo</span>
+    </div>
+
+    <div id="confirmModal" class="modal-overlay">
+        <div class="modal">
+            <h3>Remove Post?</h3>
+            <p style="color: var(--text-secondary); margin: 10px 0; font-size: 14px;">Are you sure you want to remove this post from your feed?</p>
+            <div class="modal-btns">
+                <button class="btn-confirm" onclick="hidePost(); toggleModal(false);">Remove</button>
+                <button class="btn-cancel" onclick="toggleModal(false)">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showToast(message) {
+        const toast = document.getElementById('toast');
+        toast.innerText = message;
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+
+    function hidePost() {
+        const post = document.getElementById('mainPost');
+        const snackbar = document.getElementById('undoSnackbar');
+        post.style.display = 'none';
+        snackbar.style.display = 'flex';
+        
+        setTimeout(() => {
+            snackbar.style.display = 'none';
+        }, 5000);
+    }
+
+    function undoHide() {
+        const post = document.getElementById('mainPost');
+        const snackbar = document.getElementById('undoSnackbar');
+        post.style.display = 'block';
+        snackbar.style.display = 'none';
+    }
+
+    function toggleModal(show) {
+        const modal = document.getElementById('confirmModal');
+        modal.style.display = show ? 'flex' : 'none';
+    }
+
+    function react(btn) {
+        btn.classList.add('reaction-pop');
+        btn.style.color = 'var(--error-red)';
+        btn.innerHTML = '❤️ Loved';
+        setTimeout(() => btn.classList.remove('reaction-pop'), 300);
+    }
+</script>
+
+</body>
+</html>

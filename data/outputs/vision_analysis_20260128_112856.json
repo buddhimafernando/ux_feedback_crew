@@ -1,0 +1,282 @@
+{
+  "screen_type": "home",
+  "components": [
+    {
+      "type": "status_bar",
+      "text": "21:05",
+      "position": "top",
+      "color": "black",
+      "size": "small"
+    },
+    {
+      "type": "status_bar_icon",
+      "text": "4G",
+      "position": "top",
+      "color": "black",
+      "size": "small"
+    },
+    {
+      "type": "status_bar_icon",
+      "text": "Battery icon",
+      "position": "top",
+      "color": "black",
+      "size": "small"
+    },
+    {
+      "type": "label",
+      "text": "facebook",
+      "position": "top",
+      "color": "Facebook blue",
+      "size": "large"
+    },
+    {
+      "type": "icon_button",
+      "text": "Add (plus) icon",
+      "position": "top",
+      "color": "dark grey",
+      "size": "medium"
+    },
+    {
+      "type": "icon_button",
+      "text": "Search icon",
+      "position": "top",
+      "color": "dark grey",
+      "size": "medium"
+    },
+    {
+      "type": "icon_button",
+      "text": "Messenger (chat bubble) icon",
+      "position": "top",
+      "color": "dark grey",
+      "size": "medium"
+    },
+    {
+      "type": "badge",
+      "text": "9+",
+      "position": "top-right",
+      "color": "red with white text",
+      "size": "small"
+    },
+    {
+      "type": "profile_picture",
+      "text": "User profile picture",
+      "position": "top",
+      "color": "n/a",
+      "size": "medium"
+    },
+    {
+      "type": "text_input",
+      "text": "What's on your mind?",
+      "position": "top",
+      "color": "light grey placeholder",
+      "size": "medium"
+    },
+    {
+      "type": "icon",
+      "text": "Photo/Gallery icon",
+      "position": "top",
+      "color": "dark grey",
+      "size": "medium"
+    },
+    {
+      "type": "story_card",
+      "text": "Create story",
+      "position": "middle",
+      "color": "white background",
+      "size": "medium"
+    },
+    {
+      "type": "icon_button",
+      "text": "Plus icon (for Create story)",
+      "position": "middle (overlay on story card)",
+      "color": "blue background, white icon",
+      "size": "medium"
+    },
+    {
+      "type": "story_card",
+      "text": "Harindu Samarasinghe",
+      "position": "middle",
+      "color": "n/a (image background)",
+      "size": "medium"
+    },
+    {
+      "type": "story_card",
+      "text": "Prabhath Madhusanka",
+      "position": "middle",
+      "color": "n/a (image background)",
+      "size": "medium"
+    },
+    {
+      "type": "story_card",
+      "text": "Anuda Pasandul",
+      "position": "middle",
+      "color": "n/a (image background)",
+      "size": "medium"
+    },
+    {
+      "type": "profile_picture",
+      "text": "Babuku profile picture",
+      "position": "middle",
+      "color": "n/a",
+      "size": "medium"
+    },
+    {
+      "type": "label",
+      "text": "Babuku - බබුකු",
+      "position": "middle",
+      "color": "black",
+      "size": "medium"
+    },
+    {
+      "type": "label",
+      "text": "5h",
+      "position": "middle",
+      "color": "dark grey",
+      "size": "small"
+    },
+    {
+      "type": "icon",
+      "text": "Public/Globe icon",
+      "position": "middle",
+      "color": "dark grey",
+      "size": "small"
+    },
+    {
+      "type": "icon_button",
+      "text": "More options (three dots) icon",
+      "position": "middle",
+      "color": "dark grey",
+      "size": "medium"
+    },
+    {
+      "type": "icon_button",
+      "text": "Close (X) icon",
+      "position": "middle",
+      "color": "dark grey",
+      "size": "medium"
+    },
+    {
+      "type": "emoji",
+      "text": "Sad face emoji",
+      "position": "middle",
+      "color": "n/a",
+      "size": "medium"
+    },
+    {
+      "type": "emoji",
+      "text": "Red heart emoji",
+      "position": "middle",
+      "color": "n/a",
+      "size": "medium"
+    },
+    {
+      "type": "image",
+      "text": "Post image (woman with money)",
+      "position": "middle",
+      "color": "n/a",
+      "size": "large"
+    },
+    {
+      "type": "text",
+      "text": "බිරිඳක් තම මියගිය ස්වාමියාගේ කමිසය වසර අටක් තිස්සේ නිවසේ සාලයේ එල්ලා තැබුවාය. ඇය කිසිදා එය ගලවා ගත්තේ නැත.ඇය නිතරම එහි සාක්කුවේ මුදල් තැබුවාය. තම දරුවන් මගේ ගන්නට",
+      "position": "bottom",
+      "color": "black",
+      "size": "medium"
+    },
+    {
+      "type": "bottom_navigation_button",
+      "text": "Home",
+      "position": "bottom",
+      "color": "Facebook blue (active)",
+      "size": "medium"
+    },
+    {
+      "type": "bottom_navigation_button",
+      "text": "Reels",
+      "position": "bottom",
+      "color": "dark grey",
+      "size": "medium"
+    },
+    {
+      "type": "bottom_navigation_button",
+      "text": "Friends",
+      "position": "bottom",
+      "color": "dark grey",
+      "size": "medium"
+    },
+    {
+      "type": "badge",
+      "text": "1",
+      "position": "bottom (over Friends icon)",
+      "color": "red with white text",
+      "size": "small"
+    },
+    {
+      "type": "bottom_navigation_button",
+      "text": "Marketplace",
+      "position": "bottom",
+      "color": "dark grey",
+      "size": "medium"
+    },
+    {
+      "type": "bottom_navigation_button",
+      "text": "Notifications",
+      "position": "bottom",
+      "color": "dark grey",
+      "size": "medium"
+    },
+    {
+      "type": "badge",
+      "text": "2",
+      "position": "bottom (over Notifications icon)",
+      "color": "red with white text",
+      "size": "small"
+    },
+    {
+      "type": "bottom_navigation_button",
+      "text": "Menu",
+      "position": "bottom",
+      "color": "dark grey",
+      "size": "medium"
+    }
+  ],
+  "layout_structure": "The screen features a classic social media layout with a fixed top header containing the app logo and action icons. Below this is a section for creating a new post, followed by a horizontal scrollable 'Stories' carousel. The main content area is a vertically scrollable feed of posts, with one full post visible. A fixed bottom navigation bar provides access to main app sections.",
+  "color_scheme": {
+    "primary_colors": [
+      "Facebook blue (#1877F2)",
+      "white",
+      "black",
+      "dark grey",
+      "red"
+    ],
+    "background": "white",
+    "text_colors": [
+      "black",
+      "dark grey",
+      "Facebook blue",
+      "white (on badges)"
+    ]
+  },
+  "typography": {
+    "heading_sizes": "The 'facebook' logo is large. User names (e.g., 'Babuku', story names) are medium-large. Time/status bar text is small.",
+    "body_text_size": "Body text such as 'What's on your mind?', 'Create story', post time ('5h'), and the post description are generally small to medium-small."
+  },
+  "spacing_and_density": {
+    "overall_density": "Comfortable to tight. The stories section is quite dense horizontally, maximizing content visibility. The feed post itself is well-spaced vertically, with clear separation between elements like the post header, reactions, image, and text.",
+    "element_spacing": "Elements in the top header and bottom navigation are evenly spaced horizontally. There's a comfortable vertical margin between the header, post input, stories, and feed. Stories cards are tightly packed with minimal horizontal padding between them. Within a feed post, elements are generally compact vertically."
+  },
+  "accessibility_observations": [
+    "The grey placeholder text 'What's on your mind?' and some smaller grey icons (e.g., globe icon, photo icon) might have insufficient contrast against the white background for users with certain visual impairments.",
+    "Notification badges (e.g., '9+', '1', '2') are small, potentially making them difficult to tap accurately for users with motor impairments. The text within them is also very small.",
+    "Some text elements, such as the bottom navigation labels and post metadata ('5h'), are quite small and may be difficult to read without zooming or larger system font settings."
+  ],
+  "notable_patterns": [
+    "Persistent App Header: A consistent top bar for branding and global actions.",
+    "Horizontal Story Carousel: A common pattern for displaying transient user-generated content.",
+    "Card-based Feed: Content is presented in distinct, scrollable cards for easy digestion.",
+    "Fixed Bottom Navigation Bar: Provides easy access to core app sections from any point.",
+    "Notification Badges: Visual indicators for new activity, common in social and messaging apps.",
+    "Circular Profile Avatars: Standard representation for user identities.",
+    "Contextual Action Icons: Icons for post options (three dots, close) and quick reactions (emojis)."
+  ]
+}

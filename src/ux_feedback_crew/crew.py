@@ -23,6 +23,11 @@ class UxFeedbackCrew():
             api_key=os.getenv("GEMINI_API_KEY")
         )
 
+        self.gemini_preview_llm = LLM(
+            model="gemini/gemini-3-flash-preview", 
+            api_key=os.getenv("GEMINI_API_KEY")
+        )
+
     @agent
     def vision_analyst(self) -> Agent:
         return Agent(
@@ -55,7 +60,7 @@ class UxFeedbackCrew():
     def wireframe_designer(self) -> Agent:
         return Agent(
             config=self.agents_config['wireframe_designer'],
-            llm=self.gemini_llm, # 2. Assign the LLM here
+            llm=self.gemini_preview_llm, # 2. Assign the LLM here
             tools=[create_wireframe],
             verbose=True
         )

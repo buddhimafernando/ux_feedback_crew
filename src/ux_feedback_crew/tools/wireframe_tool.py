@@ -1,6 +1,7 @@
 from crewai.tools import tool
 from google import genai
 import os
+import webbrowser
 from pathlib import Path
 from datetime import datetime
 from dotenv import load_dotenv
@@ -48,7 +49,7 @@ Make it look professional and implement all suggested improvements.
 """
     
     response = client.models.generate_content(
-        model='gemini-2.5-flash',
+        model='gemini-3-flash-preview',
         contents=prompt
     )
     
@@ -68,5 +69,12 @@ Make it look professional and implement all suggested improvements.
     
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(html_code)
+    
+    # Automatically open the HTML file in the default browser
+    try:
+        webbrowser.open(f'file://{output_path.absolute()}')
+        print(f"✓ Wireframe opened in browser: {output_path}")
+    except Exception as e:
+        print(f"⚠ Could not auto-open browser: {e}")
     
     return f"Wireframe generated and saved to: {output_path}"
