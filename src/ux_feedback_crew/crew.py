@@ -90,13 +90,33 @@ class UxFeedbackCrew():
             config=self.tasks_config['create_wireframe'],
         )
     
+    
+    # @crew
+    # def crew(self) -> Crew:
+    #     """Creates the UX Feedback Crew"""
+    #     return Crew(
+    #         agents=self.agents,
+    #         tasks=self.tasks,
+    #         process=Process.sequential,
+    #         verbose=True,
+    #         max_iter=1   
+    #     )
     @crew
-    def crew(self) -> Crew:
-        """Creates the UX Feedback Crew"""
+    def evaluation_crew(self) -> Crew:
+        """Phase 1: Analysis, Heuristics, and Feedback"""
         return Crew(
-            agents=self.agents,
-            tasks=self.tasks,
+            agents=[self.vision_analyst(), self.heuristic_evaluator(), self.feedback_specialist()],
+            tasks=[self.analyze_ui(), self.evaluate_heuristics(), self.generate_feedback()],
             process=Process.sequential,
-            verbose=True,
-            max_iter=1   
+            verbose=True
+        )
+
+    @crew
+    def wireframe_crew(self) -> Crew:
+        """Phase 2: Triggered by Flutter 'Generate Wireframe' button"""
+        return Crew(
+            agents=[self.wireframe_designer()],
+            tasks=[self.create_wireframe()],
+            process=Process.sequential,
+            verbose=True
         )
