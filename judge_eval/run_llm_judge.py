@@ -6,7 +6,7 @@ import litellm
 
 load_dotenv()
 
-JUDGE_MODEL = os.getenv("GEMINI_JUDGE_MODEL", "gemini/gemini-2.5-flash")
+JUDGE_MODEL = os.getenv("GEMINI_JUDGE_MODEL", "gemini/gemini-2.5-pro")
 
 
 def read_json(path):

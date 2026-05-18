@@ -55,9 +55,9 @@ def migrate_dataset():
             feedback_items.append({
                 "title": row['heuristic'], 
                 "priority": map_severity(row['severity']),
-                "effort_estimate": "Medium", # Defaulting for now
+                "effort_estimate": "Medium", 
                 "why_it_matters": row['issue'],
-                "what_to_do": [row['suggestion']], # Wrapped in list for Agent compatibility
+                "what_to_do": [row['suggestion']], 
                 "wireframe_changes": f"Apply UI fix according to {row['heuristic']} standards."
             })
         
